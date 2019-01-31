@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Shahov Gleb"
         android:textColor="#0c669b"
-        android:textSize="35dp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
