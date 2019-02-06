@@ -1,11 +1,12 @@
 package com.example.user.loftmoney;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class AddItemActivity extends AppCompatActivity {
            @Override
            public void afterTextChanged(Editable editable) {
 
-               if (name.getText().toString().length() <= 0 || price.getText().toString().length() <= 0)
+               if (name.getText().toString().trim().length() <= 0 || price.getText().toString().trim().length() <= 0)
                    addBtn.setEnabled(false);
                else addBtn.setEnabled(true);
 
