@@ -13,16 +13,15 @@
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="androidx"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".AddItemActivity">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name = "android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
         </activity>
-        <activity android:name=".ItemsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AddItemActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
