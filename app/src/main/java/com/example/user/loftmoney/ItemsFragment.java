@@ -1,13 +1,13 @@
 package com.example.user.loftmoney;
 
 
+import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -23,11 +26,14 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class ItemsFragment extends Fragment {
 
-    public static ItemsFragment newInstance(int type){
+    private static final String TAG = "ItemsFragment";
+
+
+    public static ItemsFragment newInstance(String type){
         ItemsFragment fragment = new ItemsFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putInt(KEY_TYPE, type);
+        bundle.putString(KEY_TYPE, type);
 
         fragment.setArguments(bundle);
 
@@ -35,13 +41,15 @@ public class ItemsFragment extends Fragment {
 
     }
 
-    public static final int TYPE_INCOMES = 0;
-    public static final int TYPE_EXPENSES = 1;
-    public static final int TYPE_BALANCE = 2;
+
     public static final String KEY_TYPE = "type";
 
+    private String token = "$2y$10$MI9aJHOPZNR1WLHMPoRkx.6geJcwuzU/JxArRxeOoK9KXyPs3DzfG";
+
     ItemsAdapter adapter;
-    private int type;
+    private String type;
+
+    private Api api;
 
     public ItemsFragment() {
         // Required empty public constructor
@@ -53,11 +61,11 @@ public class ItemsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         adapter = new ItemsAdapter();
 
-      type = getArguments().getInt(KEY_TYPE);
+        type = getArguments().getString(KEY_TYPE);
 
-
-
-        Log.d("ItemsFragment", "type" + type);
+        Application application = getActivity().getApplication();
+        App app = (App)application;
+        api = app.getApi();
 
     }
 
@@ -75,29 +83,32 @@ public class ItemsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
         recycler.addItemDecoration(new DividerItemDecoration(requireContext(),
                 DividerItemDecoration.VERTICAL));
-         adapter.setItems(createTempItems());
+
+        loadItems();
+
     }
 
-    private List<Item> createTempItems(){
+    private void loadItems(){
+        Call call = api.getItems(type, token);
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
 
-        List <Item> items = new ArrayList<>();
-        items.add(new Item("Молоко", "70"));
-        items.add(new Item("Зубная щетка", "120"));
-        items.add(new Item("Печенье", "56"));
-        items.add(new Item("Холодильник", "20000"));
-        items.add(new Item("Яблоки", "40"));
-        items.add(new Item("Курица", "156"));
-        items.add(new Item("Шкаф", "10100"));
-        items.add(new Item("Плита", "25700"));
-        items.add(new Item("Морковь", "56"));
-        items.add(new Item("Яйца", "75"));
-        items.add(new Item("Имбирь", "121"));
-        items.add(new Item("Кофе", "450"));
-        items.add(new Item("Чай", "123"));
-        items.add(new Item("Мюсли", "89"));
-        items.add(new Item("Овсянка", "56"));
+                List <Item> items = (List<Item>) response.body();
+                adapter.setItems(items);
+            }
 
-        return items;
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Log.e(TAG, "loadItems: ", t);
+
+            }
+        });
+
     }
+
+
+
+
 
 }

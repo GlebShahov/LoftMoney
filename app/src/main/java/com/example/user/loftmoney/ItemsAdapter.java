@@ -23,6 +23,7 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
 
     public void setItems(List<Item> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -63,7 +64,7 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
 
         public void bindItem(Item item) {
             name.setText(item.getName());
-            price.setText(item.getPrice());
+            price.setText(String.valueOf(item.getPrice()));
         }
     }
 
