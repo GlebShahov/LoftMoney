@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AddItemActivity">
-    
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width = "match_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/add_item_hint_name"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="100dp">
+        android:hint="@string/add_item_hint_name">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name"
-            android:textSize="24sp"
-            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:hint="@string/add_item_hint_price"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="16dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/price"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimary"
-        android:inputType="number"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/add_item_hint_price">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/add_btn"
-        android:drawableStart="@drawable/ic_check"
-        android:drawablePadding="8dp"
-        android:enabled="false"
-        android:background="@android:color/transparent"
-        android:textSize="18sp"
-        android:textColor="@color/color_add_btn"
-        android:layout_marginTop="48dp"
-        android:text="@string/add_item_button"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_check" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_check"
+        android:drawableLeft="@drawable/ic_check"
+        android:drawablePadding="8dp"
+        android:enabled="false"
+        android:text="@string/add_item_button"
+        android:textColor="@color/color_add_btn"
+        android:textSize="18sp" />
 
 
 </LinearLayout>
