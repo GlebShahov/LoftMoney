@@ -17,8 +17,11 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
     private List <Item> items = Collections.emptyList();
 
 
+    public void addItem (Item item){
+        this.items.add(item);
+        notifyItemInserted(items.size());
 
-
+    }
 
 
     public void setItems(List<Item> items) {
