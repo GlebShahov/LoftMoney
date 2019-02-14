@@ -3,30 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.user.loftmoney">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:appComponentFactory="androidx"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="androidx"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:appComponentFactory">
 
-        <activity android:name=".MainActivity" android:label="@string/main_screen_titles">
+        <activity android:name=".AuthActivity" android:theme="@style/AuthTheme">
             <intent-filter>
-                <action android:name = "android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddItemActivity" android:theme="@style/AddItemTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/main_screen_titles"/>
 
-        </activity>
+
+        <activity
+            android:name=".AddItemActivity"
+            android:theme="@style/AddItemTheme"/>
+
+
     </application>
 
 </manifest>

@@ -46,6 +46,7 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
 
     @Override
     public int getItemCount() {
+
         return items.size();
     }
 

@@ -9,5 +9,7 @@
     <string name="main_tab_incomes">Доходы</string>
     <string name="main_tab_balance">Баланс</string>
 
+    <string name="auth_enter">Войти</string>
+
 
 </resources>
