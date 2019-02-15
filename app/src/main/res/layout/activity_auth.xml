@@ -4,22 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:gravity="center"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    android:gravity="center"
     tools:context=".AuthActivity">
 
     <ImageView
-        app:srcCompat="@drawable/ic_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_logo" />
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="36sp"
-        android:fontFamily="sans-serif-medium"
-        android:layout_marginTop="18dp"
+        android:textSize="36sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/enter_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        app:backgroundTint="@color/white"
+        android:text="@string/auth_enter"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:cornerRadius="24dp" />
 
 </LinearLayout>
