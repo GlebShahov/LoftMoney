@@ -1,26 +1,56 @@
 package com.example.user.loftmoney;
 
 import android.content.Context;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHolder> {
+public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
-    private List <Item> items = Collections.emptyList();
+    private List<Item> items = Collections.emptyList();
+    private ItemsAdapterListener listener = null;
+    private SparseBooleanArray selectedItems = new SparseBooleanArray();
 
 
-    public void addItem (Item item){
+    public void addItem(Item item) {
         this.items.add(item);
         notifyItemInserted(items.size());
+    }
 
+
+    public void setListener(ItemsAdapterListener listener) {
+        this.listener = listener;
+    }
+
+     Item removeItem(int position){
+        Item item = items.get(position);
+        items.remove(position);
+        notifyItemRemoved(position);
+        return item;
+    }
+
+
+    void toggleItem(int position) {
+        if (selectedItems.get(position, false)) {
+            selectedItems.put(position, false);
+        } else {
+            selectedItems.put(position, true);
+        }
+        notifyItemChanged(position);
+    }
+
+    void clearSelections() {
+        selectedItems.clear();
+        notifyDataSetChanged();
     }
 
 
@@ -29,9 +59,24 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
         notifyDataSetChanged();
     }
 
+    List<Integer> getSelectedPositions() {
+        List<Integer> selectedPosition = new ArrayList<>();
+
+        for (int i = 0; i < selectedItems.size(); i++) {
+            int key = selectedItems.keyAt(i);
+
+            if (selectedItems.get(key)) {
+                selectedPosition.add(key);
+            }
+        }
+        return selectedPosition;
+
+    }
+
+
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item, parent, false);
@@ -41,7 +86,8 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = items.get(position);
-        holder.bindItem(item);
+        holder.bindItem(item, selectedItems.get(position));
+        holder.setListenter(item, listener, position);
     }
 
     @Override
@@ -51,7 +97,7 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
     }
 
 
-    static class ItemViewHolder extends RecyclerView.ViewHolder{
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
         private TextView price;
@@ -66,10 +112,30 @@ public class ItemsAdapter extends RecyclerView.Adapter <ItemsAdapter.ItemViewHol
 
         }
 
-        public void bindItem(Item item) {
+        void bindItem(Item item, boolean selected) {
             name.setText(item.getName());
             price.setText(String.valueOf(item.getPrice()));
+
+            itemView.setSelected(selected);
         }
+
+        void setListenter(Item item, ItemsAdapterListener listener, int position) {
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemClick(item, position);
+                }
+            });
+
+            itemView.setOnLongClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemLongClick(item, position);
+                }
+                return true;
+
+            });
+
+        }
+
     }
 
 }
