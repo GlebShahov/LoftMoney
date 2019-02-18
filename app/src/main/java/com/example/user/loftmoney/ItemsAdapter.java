@@ -96,6 +96,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         return items.size();
     }
 
+    public int getSelectedCount() {
+        return selectedItems.size();
+    }
+
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
 

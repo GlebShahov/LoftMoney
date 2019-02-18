@@ -192,6 +192,8 @@ public class ItemsFragment extends Fragment {
             }
             getActivity().startActionMode(new ActionModeCallback());
             toggleItem(position);
+            actionMode.setTitle("Выделено: " + String.valueOf(adapter
+                    .getSelectedCount()));
         }
 
         public void toggleItem(int position) {
