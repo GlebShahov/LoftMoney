@@ -9,7 +9,13 @@
     <string name="main_tab_incomes">Доходы</string>
     <string name="main_tab_balance">Баланс</string>
 
+    <string name="action_mode_item_delete">Удалить</string>
+
     <string name="auth_enter">Войти</string>
+    <string name="item_fragment_delete_message">Вы действительно хотите удалить выбранные элементы?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="item_fragment_selected">Выделено</string>
 
 
 </resources>
