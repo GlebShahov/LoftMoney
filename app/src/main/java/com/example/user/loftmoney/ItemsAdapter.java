@@ -44,6 +44,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
             selectedItems.put(position, false);
         } else {
             selectedItems.put(position, true);
+
         }
         notifyItemChanged(position);
     }
@@ -97,7 +98,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
     }
 
     public int getSelectedCount() {
-        return selectedItems.size();
+        return (selectedItems.size() + 1);
     }
 
 

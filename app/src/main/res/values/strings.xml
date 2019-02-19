@@ -15,6 +15,7 @@
     <string name="item_fragment_delete_message">Вы действительно хотите удалить выбранные элементы?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="item_fragment_selected">Выделено</string>
 
 
 </resources>
