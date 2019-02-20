@@ -58,7 +58,7 @@ public class ItemsFragment extends Fragment {
     private SwipeRefreshLayout refresh;
 
 
-    ItemsAdapter adapter;
+    private ItemsAdapter adapter;
     private String type;
 
     private Api api;
@@ -67,6 +67,7 @@ public class ItemsFragment extends Fragment {
     public ItemsFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
