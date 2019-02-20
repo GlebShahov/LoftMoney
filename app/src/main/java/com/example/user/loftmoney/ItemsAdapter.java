@@ -44,7 +44,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
     void toggleItem(int position) {
         if (selectedItems.get(position, false)) {
-            selectedItems.put(position, false);
+            selectedItems.delete(position);
         } else {
             selectedItems.put(position, true);
 
@@ -105,7 +105,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
     }
 
     public int getSelectedCount() {
-        return (selectedItems.size() + 1);
+        return (selectedItems.size());
     }
 
 

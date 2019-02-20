@@ -69,7 +69,6 @@ public class ItemsFragment extends Fragment {
     }
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -197,9 +196,8 @@ public class ItemsFragment extends Fragment {
         }
 
         public void toggleItem(int position) {
-            actionMode.setTitle(getString(R.string.item_fragment_selected)+ ": " + String.valueOf(adapter
-                    .getSelectedCount()));
             adapter.toggleItem(position);
+            actionMode.setTitle(getString(R.string.item_fragment_selected) + ": " + String.valueOf(adapter.getSelectedCount()));
 
         }
     }
@@ -248,13 +246,13 @@ public class ItemsFragment extends Fragment {
             actionMode.finish();
         }
 
-        void showDialog(){
+        void showDialog() {
             AlertDialog dialog = new AlertDialog.Builder(requireContext())
                     .setMessage(R.string.item_fragment_delete_message)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                                removeSelectedItems();
+                            removeSelectedItems();
                         }
                     })
                     .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
