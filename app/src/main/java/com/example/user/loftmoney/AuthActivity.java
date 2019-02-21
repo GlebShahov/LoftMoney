@@ -33,15 +33,9 @@ public class AuthActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_auth);
-
         enterBtn = findViewById(R.id.enter_btn);
-
         api = ((App)getApplication()).getApi();
-
-        enterBtn.setOnClickListener(v -> {
-            auth();
-        });
-
+        enterBtn.setOnClickListener(v -> auth());
     }
 
     private void auth(){
@@ -74,13 +68,11 @@ public class AuthActivity extends AppCompatActivity {
         preferences.edit()
                 .putString("auth_token", token)
                 .apply();
-
     }
 
     private String getToken(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         return preferences.getString("auth_token", null);
-
     }
 
 }

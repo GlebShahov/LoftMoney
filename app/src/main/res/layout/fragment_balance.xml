@@ -120,15 +120,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="55dp">
+        android:paddingBottom="56dp">
 
         <com.example.user.loftmoney.DiagramView
             android:id="@+id/diagram_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity = "center" />
+            android:layout_gravity="center" />
     </FrameLayout>
-
 
 
 </LinearLayout>

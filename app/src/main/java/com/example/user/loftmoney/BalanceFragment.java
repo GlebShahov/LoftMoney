@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,6 @@ import retrofit2.Response;
 
 
 public class BalanceFragment extends androidx.fragment.app.Fragment {
-
-
-
 
 
     public BalanceFragment() {
@@ -68,9 +64,6 @@ public class BalanceFragment extends androidx.fragment.app.Fragment {
         expenseView = view.findViewById(R.id.expense_value);
         incomeView = view.findViewById(R.id.income_value);
         diagramView = view.findViewById(R.id.diagram_view);
-
-
-
     }
 
     private void loadBalance(){
@@ -85,9 +78,9 @@ public class BalanceFragment extends androidx.fragment.app.Fragment {
 
                 int balance = balanceResponse.getTotalIncome() - balanceResponse.getTotalExpense();
 
-                balanceView.setText(String.valueOf(balance)+ Html.fromHtml(" &#x20bd"));
-                expenseView.setText(String.valueOf(balanceResponse.getTotalExpense())+ Html.fromHtml(" &#x20bd"));
-                incomeView.setText(String.valueOf(balanceResponse.getTotalIncome())+ Html.fromHtml(" &#x20bd"));
+                balanceView.setText(getString(R.string.count, balance));
+                expenseView.setText(getString(R.string.count, balanceResponse.getTotalExpense()));
+                incomeView.setText(getString(R.string.count, balanceResponse.getTotalIncome()));
 
                 diagramView.upDate(balanceResponse.getTotalIncome(), balanceResponse.getTotalExpense());
             }

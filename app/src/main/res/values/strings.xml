@@ -21,5 +21,7 @@
     <string name="balance_income_title">Доход</string>
     <string name="balance_expenses_title">Расход</string>
 
+    <string name="count">%1$s \u20bd</string>
+
 
 </resources>

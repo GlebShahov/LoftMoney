@@ -180,7 +180,6 @@ public class ItemsFragment extends Fragment {
                 return;
             }
             toggleItem(position);
-
         }
 
         @Override
@@ -226,14 +225,12 @@ public class ItemsFragment extends Fragment {
                 return true;
             }
             return false;
-
         }
 
         @Override
         public void onDestroyActionMode(android.view.ActionMode mode) {
             actionMode = null;
             adapter.clearSelections();
-
         }
 
         void removeSelectedItems() {

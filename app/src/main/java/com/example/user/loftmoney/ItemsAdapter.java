@@ -1,7 +1,6 @@
 package com.example.user.loftmoney;
 
 import android.content.Context;
-import android.text.Html;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,8 +93,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         holder.bindItem(item, selectedItems.get(position));
         holder.setListenter(item, listener, position);
         holder.setFragmentColor(item.getType());
-
-
     }
 
     @Override
@@ -126,7 +123,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
         void bindItem(Item item, boolean selected) {
             name.setText(item.getName());
-            price.setText(String.valueOf(item.getPrice()) + Html.fromHtml(" &#x20bd"));
+            price.setText(context.getString(R.string.count, String.valueOf(item.getPrice())));
 
 
             itemView.setSelected(selected);
