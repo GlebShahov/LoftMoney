@@ -13,6 +13,8 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
      public static final int PAGE_EXPENSES = 1;
      public static final int PAGE_BALANCE = 2;
 
+
+
     private static final int PAGE_COUNT = 3;
 
     private Context context;
@@ -30,7 +32,7 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
             case PAGE_EXPENSES:
                 return ItemsFragment.newInstance(Item.TYPE_EXPENSE);
             case PAGE_BALANCE:
-                return ItemsFragment.newInstance(Item.TYPE_BALANCE);
+                return BalanceFragment.newInstance();
             default:
                 return new ItemsFragment();
 
@@ -39,7 +41,7 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return PAGE_COUNT;
     }
 
     @Nullable

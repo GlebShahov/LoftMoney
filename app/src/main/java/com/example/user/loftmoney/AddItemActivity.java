@@ -39,13 +39,11 @@ public class AddItemActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String nameText = name.getText().toString();
                 String namePrice = price.getText().toString();
                 String type = getIntent().getStringExtra(KEY_TYPE);
 
                 addItem(nameText, namePrice, type);
-
             }
         });
 
@@ -62,17 +60,14 @@ public class AddItemActivity extends AppCompatActivity {
 
            @Override
            public void afterTextChanged(Editable editable) {
-
                if (name.getText().toString().trim().length() <= 0 || price.getText().toString().trim().length() <= 0)
                    addBtn.setEnabled(false);
                else addBtn.setEnabled(true);
-
            }
        };
 
        name.addTextChangedListener(editWatcher);
        price.addTextChangedListener(editWatcher);
-
     }
 
     private void addItem(String name, String price, String type){
@@ -91,7 +86,6 @@ public class AddItemActivity extends AppCompatActivity {
              setResult(MainActivity.RESULT_OK);
 
              finish();
-
          }
 
          @Override
@@ -99,7 +93,6 @@ public class AddItemActivity extends AppCompatActivity {
              setResult(MainActivity.RESULT_CANCELED);
 
              finish();
-
          }
      });
 

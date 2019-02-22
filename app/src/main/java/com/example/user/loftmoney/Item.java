@@ -4,7 +4,7 @@ public class Item {
 
     public static final String TYPE_INCOME = "income";
     public static final String TYPE_EXPENSE = "expense";
-    public static final String TYPE_BALANCE = "balance";
+
 
 
     private String name;
@@ -50,4 +50,7 @@ public class Item {
     public String getType() {
         return type;
     }
+
+
+
 }

@@ -58,7 +58,7 @@ public class ItemsFragment extends Fragment {
     private SwipeRefreshLayout refresh;
 
 
-    ItemsAdapter adapter;
+    private ItemsAdapter adapter;
     private String type;
 
     private Api api;
@@ -180,7 +180,6 @@ public class ItemsFragment extends Fragment {
                 return;
             }
             toggleItem(position);
-
         }
 
         @Override
@@ -196,9 +195,8 @@ public class ItemsFragment extends Fragment {
         }
 
         public void toggleItem(int position) {
-            actionMode.setTitle(getString(R.string.item_fragment_selected)+ ": " + String.valueOf(adapter
-                    .getSelectedCount()));
             adapter.toggleItem(position);
+            actionMode.setTitle(getString(R.string.item_fragment_selected) + ": " + String.valueOf(adapter.getSelectedCount()));
 
         }
     }
@@ -227,14 +225,12 @@ public class ItemsFragment extends Fragment {
                 return true;
             }
             return false;
-
         }
 
         @Override
         public void onDestroyActionMode(android.view.ActionMode mode) {
             actionMode = null;
             adapter.clearSelections();
-
         }
 
         void removeSelectedItems() {
@@ -247,13 +243,13 @@ public class ItemsFragment extends Fragment {
             actionMode.finish();
         }
 
-        void showDialog(){
+        void showDialog() {
             AlertDialog dialog = new AlertDialog.Builder(requireContext())
                     .setMessage(R.string.item_fragment_delete_message)
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                                removeSelectedItems();
+                            removeSelectedItems();
                         }
                     })
                     .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {

@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
@@ -19,6 +20,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
     private List<Item> items = Collections.emptyList();
     private ItemsAdapterListener listener = null;
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
+
 
 
     public void addItem(Item item) {
@@ -41,7 +43,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
     void toggleItem(int position) {
         if (selectedItems.get(position, false)) {
-            selectedItems.put(position, false);
+            selectedItems.delete(position);
         } else {
             selectedItems.put(position, true);
 
@@ -53,6 +55,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         selectedItems.clear();
         notifyDataSetChanged();
     }
+
 
 
     public void setItems(List<Item> items) {
@@ -89,6 +92,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         Item item = items.get(position);
         holder.bindItem(item, selectedItems.get(position));
         holder.setListenter(item, listener, position);
+        holder.setFragmentColor(item.getType());
     }
 
     @Override
@@ -98,7 +102,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
     }
 
     public int getSelectedCount() {
-        return (selectedItems.size() + 1);
+        return (selectedItems.size());
     }
 
 
@@ -119,9 +123,19 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
         void bindItem(Item item, boolean selected) {
             name.setText(item.getName());
-            price.setText(String.valueOf(item.getPrice()));
+            price.setText(context.getString(R.string.count, String.valueOf(item.getPrice())));
+
 
             itemView.setSelected(selected);
+        }
+
+       void setFragmentColor (String type){
+            if(type.equals(Item.TYPE_INCOME)){
+                price.setTextColor(ContextCompat.getColor(context, R.color.income_color));
+            }
+            else if (type.equals(Item.TYPE_EXPENSE)){
+                price.setTextColor(ContextCompat.getColor(context,R.color.expense_color));
+            }
         }
 
         void setListenter(Item item, ItemsAdapterListener listener, int position) {

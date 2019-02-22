@@ -21,5 +21,7 @@ public interface Api {
 
     @POST("items/remove")
     Call<Object> removeItem(@Query("id") Long id, @Query("auth-token") String token);
+    @GET("balance")
+    Call<BalanceResponse> balance( @Query("auth-token") String token);
 
 }

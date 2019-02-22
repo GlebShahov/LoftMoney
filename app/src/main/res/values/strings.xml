@@ -17,5 +17,11 @@
     <string name="no">Нет</string>
     <string name="item_fragment_selected">Выделено</string>
 
+    <string name="balance_result_title">Доступные финансы</string>
+    <string name="balance_income_title">Доход</string>
+    <string name="balance_expenses_title">Расход</string>
+
+    <string name="count">%1$s \u20bd</string>
+
 
 </resources>

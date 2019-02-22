@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:gravity="center"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".AuthActivity">
 
     <ImageView
@@ -28,10 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        app:backgroundTint="@color/white"
         android:text="@string/auth_enter"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
+        app:backgroundTint="@color/white"
         app:cornerRadius="24dp" />
 
 </LinearLayout>
